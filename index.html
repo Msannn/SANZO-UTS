@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Autopartsid.</title>
+
+    <!-- Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,300;0,700;1,400&display=swap" rel="stylesheet">
+    
+    <!-- Feather Icons -->
+    <script src="https://unpkg.com/feather-icons"></script>
+    
+    <!-- My Style -->
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+<!-- Navbar Start -->
+  <nav class="navbar">
+      <a href="#" class="navbar-logo">Autoparts<span>id</span>.</a>
+
+      <div class="navbar-nav">
+          <a href="#home">Home</a>
+          <a href="#about">Tentang Kami</a>
+          <a href="#produk">Produk</a>
+          <a href="#contact">Kontak</a>
+          <a href="#" id="login-menu">Log In</a> <!-- Menu Login -->
+      </div>
+
+     <div class="navbar-extra">
+          <a href="#" id="search"><i data-feather="search"></i></a>
+          <a href="#" id="shopping-cart"><i data-feather="shopping-cart"></i></a>            <a href="#" id="hamburger-menu"><i data-feather="menu"></i></a>
+      </div>
+    </nav>
+<!-- Navbar End -->
+
+    <section id="keranjang" class="keranjang-section">
+      <h2>Keranjang Saya</h2>
+      <div id="daftar-keranjang"></div>
+      <p>Total item: <span id="keranjang-count">0</span></p>
+      <button id="checkout-btn">Checkout</button>
+    </section>
+    
+    <!-- Hero Section Start -->
+    <section class="hero" id="home">
+      <main class="content">
+        <h1>Mari rawatlah mesin anda <span>secara rutin.</span></h1>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Suscipit, voluptatibus!</p>
+        <a href="#cta" class="cta">Chekout Sekarang</a> <!-- Tombol CTA -->
+      </main>
+    </section>
+    <!-- Hero Section End -->
+    
+    <!-- About Section Start -->
+    <section id="about" class="about">
+      <h2><span>Tentang</span> Kami</h2>
+      
+      <div class="row">
+        <div class="about-img">
+          <img src="jpg/foto1.jpg" alt="Tentang Kami">
+        </div>
+        <div class="content">
+          <h3>Kenapa Memilih Produk Kami</h3>
+          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Corporis, iusto quibusdam sapiente fugit incidunt consequuntur debitis? Ea eaque vero reiciendis quo laboriosam modi est. Veniam?</p>
+          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eius blanditiis praesentium molestiae suscipit hic repudiandae ab. Eaque maxime consectetur minima? ipsum dolor sit amet consectetur adipisicing elit. Dignissimos deserunt veritatis ducimus.</p>
+        </div>
+      </div>
+    </section>
+    <!-- About Section End -->
+    
+    <!-- search-->
+    <form class="search-form">
+      <input type="text" id="search-box" placeholder="Cari produk..." />
+    </form>    
+    
+    <!-- Produk Section Start -->
+    <section id="produk" class="produk">
+      <h2><span>Produk</span> Kami</h2>
+      <p>Kami menyediakan berbagai spare parts mobil berkualitas & bergaransi resmi.</p>
+      
+      <div class="row">
+        <!-- Produk 1 -->
+        <div class="produk-card">
+          <img src="jpg/mesin.jpg" alt="Mesin mobil" class="produk-card-img">
+          <h3 class="produk-card-title">Mesin Mobil</h3>
+          <p class="produk-card-stok">-stok 110 </p>
+          <p class="produk-card-price">Rp 10000000</p>
+          
+          <div class="produk-buttons">
+            <button 
+              class="produk-card-btn checkout-btn"
+              data-produk="Mesin Mobil" 
+              data-bahan="Baja ringan" 
+              data-stok="110"
+              data-harga="10000000"
+            >
+              Checkout
+            </button>
+        
+            <button 
+              class="produk-card-btn keranjang-btn" 
+              data-produk="Mesin Mobil" 
+              data-bahan="Baja ringan" 
+              data-stok="110"
+              data-harga="10000000"
+            >
+              Keranjang
+            </button>
+          </div>
+        </div>   
+        
+        <!-- Produk 1 -->
+        <div class="produk-card">
+          <img src="jpg/oil.jpg" alt="Oli Mesin" class="produk-card-img">
+          <h3 class="produk-card-title">Oli Mesin Mobil</h3>
+          <p class="produk-card-stok">-stok 25</p>
+          <p class="produk-card-price">Rp 150.000</p>
+          
+          <div class="produk-buttons">
+            <button 
+              class="produk-card-btn checkout-btn"
+              data-produk="oli Mesin" 
+              data-bahan="Mineral" 
+              data-stok="25"
+              data-harga="150000"
+            >
+              Checkout
+            </button>
+        
+            <button 
+              class="produk-card-btn keranjang-btn" 
+              class="produk-card-btn checkout-btn"
+              data-produk="oli Mesin" 
+              data-bahan="Mineral" 
+              data-stok="25"
+              data-harga="150000"
+            >
+              Keranjang
+            </button>
+          </div>
+        </div>     
+        
+        <!-- Produk 1 -->
+        <div class="produk-card">
+          <img src="jpg/piston.jpg" alt="Piston Mobil" class="produk-card-img">
+          <h3 class="produk-card-title">Piston Mobil</h3>
+          <p class="produk-card-stok">-stok 25</p>
+          <p class="produk-card-price">Rp 1.000.000</p>
+          
+          <div class="produk-buttons">
+            <button 
+              class="produk-card-btn checkout-btn"
+              data-produk="Piston Mesin" 
+              data-bahan="Baja dan Logam" 
+              data-stok="25"
+              data-harga="1000000"
+            >
+              Checkout
+            </button>
+        
+            <button 
+              class="produk-card-btn keranjang-btn" 
+              class="produk-card-btn checkout-btn"
+              data-produk="Piston Mesin" 
+              data-bahan="Baja dan Logam" 
+              data-stok="25"
+              data-harga="1000000"
+            >
+              Keranjang
+            </button>
+          </div>
+        </div>   
+        
+        <!-- Produk 1 -->
+        <div class="produk-card">
+          <img src="jpg/rangka.jpg" alt="Rangka" class="produk-card-img">
+          <h3 class="produk-card-title">Rangka</h3>
+          <p class="produk-card-stok">-stok 250</p>
+          <p class="produk-card-price">Rp 15.000.000</p>
+          
+          <div class="produk-buttons">
+            <button 
+              class="produk-card-btn checkout-btn"
+              data-produk="Rangka" 
+              data-bahan="Baja dan Logam" 
+              data-stok="25"
+              data-harga="15000000"
+            >
+              Checkout
+            </button>
+        
+            <button 
+              class="produk-card-btn keranjang-btn" 
+              class="produk-card-btn checkout-btn"
+              data-produk="Rangka" 
+              data-bahan="Baja dan Logam" 
+              data-stok="25"
+              data-harga="15000000"
+            >
+              Keranjang
+            </button>
+          </div>
+        </div>      
+        
+        <!-- Produk 1 -->
+        <div class="produk-card">
+          <img src="jpg/acu.jpg" alt="Acu Mobil" class="produk-card-img">
+          <h3 class="produk-card-title">Acu Mobil</h3>
+          <p class="produk-card-stok">-stok 25</p>
+          <p class="produk-card-price">Rp 300.000</p>
+          
+        <div class="produk-buttons">  
+         <button 
+              class="produk-card-btn checkout-btn"
+              data-produk="Acu" 
+              data-bahan="Asam sulfat" 
+              data-stok="25"
+              data-harga="300000"
+            >
+              Checkout
+            </button>
+        
+            <button 
+              class="produk-card-btn keranjang-btn" 
+              class="produk-card-btn checkout-btn"
+              data-produk="Acu"
+              data-bahan="Asam sulfat" 
+              data-stok="25"
+              data-harga="300000"
+            >
+              Keranjang
+            </button>
+          </div>
+        </div>      
+        <!-- Produk 1 -->
+        
+        <div class="produk-card">
+          <img src="jpg/shock.jpg" alt="Shock Mobil" class="produk-card-img">
+          <h3 class="produk-card-title">Shock Mobil</h3>
+          <p class="produk-card-stok">-stok 25</p>
+          <p class="produk-card-price">Rp 1.500.000</p>
+          
+           <div class="produk-buttons">  
+         <button 
+              class="produk-card-btn checkout-btn"
+              data-produk="Acu" 
+              data-bahan="Asam sulfat" 
+              data-stok="25"
+              data-harga="300000"
+            >
+              Checkout
+            </button>
+        
+            <button 
+              class="produk-card-btn keranjang-btn" 
+              class="produk-card-btn checkout-btn"
+              data-produk="Acu"
+              data-bahan="Asam sulfat" 
+              data-stok="25"
+              data-harga="300000"
+            >
+              Keranjang
+            </button>
+          </div>
+        </div>      
+        <!-- Produk 1 -->
+        
+        <div class="produk-card">
+          <img src="jpg/ban.jpg" alt="Ban Mobil" class="produk-card-img">
+          <h3 class="produk-card-title">Ban Mobil</h3>
+          <p class="produk-card-stok">-stok 25</p>
+          <p class="produk-card-price">Rp 2.000.000</p>
+          
+         <div class="produk-buttons">  
+         <button 
+              class="produk-card-btn checkout-btn"
+              data-produk="Acu" 
+              data-bahan="Asam sulfat" 
+              data-stok="25"
+              data-harga="300000"
+            >
+              Checkout
+            </button>
+        
+            <button 
+              class="produk-card-btn keranjang-btn" 
+              class="produk-card-btn checkout-btn"
+              data-produk="Acu"
+              data-bahan="Asam sulfat" 
+              data-stok="25"
+              data-harga="300000"
+            >
+              Keranjang
+            </button>
+          </div>
+        </div>
+        
+        <!-- Produk 1 -->
+        <div class="produk-card">
+          <img src="jpg/knalpot.jpg" alt="knalpot" class="produk-card-img">
+          <h3 class="produk-card-title">knalpot</h3>
+          <p class="produk-card-stok">-stok 25</p>
+          <p class="produk-card-price">Rp 500.000</p>
+          
+           <div class="produk-buttons">  
+         <button 
+              class="produk-card-btn checkout-btn"
+              data-produk="Knalpot" 
+              data-bahan="Stainles" 
+              data-stok="25"
+              data-harga="500000"
+            >
+              Checkout
+            </button>
+        
+            <button 
+              class="produk-card-btn keranjang-btn" 
+              class="produk-card-btn checkout-btn"
+              data-produk="Knalpot"
+              data-bahan="Stainles" 
+              data-stok="25"
+              data-harga="500000"
+            >
+              Keranjang
+            </button>
+           </div>
+          </div>
+      </section>
+      <!-- Produk Section End -->
+      
+      <!-- Ikon keranjang -->
+       <a href="#" class="keranjang-link">
+        <i class="fa fa-shopping-cart"></i>
+        <span class="keranjang-count" id="keranjang-count">0</span>
+      </a>
+      
+  <!-- contact section start -->
+     <section id="contact" class="contact">
+        <h2><span>Kontak</span> Kami</h2>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Perferendis beatae aliquid quod aspernatur. Voluptatibus.</p>
+
+        <div class="row">
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d63354.25225437536!2d107.67170438705689!3d-7.05143016071741!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e68c1b1efbe8a69%3A0x401e8f1fc28c670!2sCiparay%2C%20Bandung%20Regency%2C%20West%20Java!5e0!3m2!1sen!2sid!4v1744360262725!5m2!1sen!2sid" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" class="maps"></iframe>
+            
+            <form action="">
+                <div class="input-group">
+                    <i data-feather="user"></i>
+                    <input type="text" placeholder="nama">
+                </div>
+                <div class="input-group">
+                    <i data-feather="mail"></i>
+                    <input type="text" placeholder="email">
+                </div>
+                <div class="input-group">
+                    <i data-feather="phone"></i>
+                    <input type="text" placeholder="no Hp">
+                </div>
+                <button type="submit" class="btn">kirim pesan</button>
+            </form>
+
+        </div>
+     </section>
+  <!-- contact section end -->
+
+  <!-- footer -->
+  <footer class="footer">
+    <div class="socials">
+      <a href="#"><i data-feather="instagram"></i></a>
+      <a href="#"><i data-feather="twitter"></i></a>
+      <a href="#"><i data-feather="facebook"></i></a>
+    </div>
+
+    <div class="link">
+      <a href="#home">Home</a>
+      <a href="#about">Tentang Kami</a>
+      <a href="#produk">Produk</a>
+      <a href="#contact">kontak</a>
+    </div>
+
+    <div class="credit">
+      <p> Created by <a href="">mosannn</a>. | & parts; 2025</p>
+    </div>
+  </footer>
+ 
+    <!-- Formulir Login (Disembunyikan secara default) -->
+    <div id="login-form-container" class="login-form-container">
+        <div class="login-form">
+            <h2>Log In</h2>
+            <form id="login-form">
+              <input type="text" id="login-nama" placeholder="Username" required>
+              <input type="password" id="login-password" placeholder="Password" required>
+              <input type="text" id="login-hp" placeholder="No Handphone" required>
+              <button type="submit" class="cta">Log In</button>
+              <button type="button" id="close-login-form" class="cta">Batal</button>
+            </form>            
+        </div>
+    </div>
+
+    <!-- Icons -->
+
+    <script>
+      feather.replace();
+// Tombol search dan form search
+const searchBtn = document.getElementById('search');
+const searchForm = document.querySelector('.search-form');
+const searchBox = document.getElementById('search-box');
+
+// Toggle form pencarian muncul/sembunyi
+searchBtn.addEventListener('click', function (e) {
+  e.preventDefault();
+  searchForm.classList.toggle('active');
+  searchBox.focus();
+});
+
+// Sembunyikan search form jika klik di luar
+document.addEventListener('click', function (e) {
+  if (!searchForm.contains(e.target) && e.target !== searchBtn) {
+    searchForm.classList.remove('active');
+  }
+});
+
+// Fitur pencarian produk
+searchBox.addEventListener('input', function () {
+  const query = this.value.toLowerCase();
+  const produkCards = document.querySelectorAll('.produk-card');
+
+  produkCards.forEach(card => {
+    const title = card.querySelector('.produk-card-title').textContent.toLowerCase();
+    card.style.display = title.includes(query) ? 'block' : 'none';
+  });
+});
+    </script>
+
+    <!-- My JavaScript -->
+    <script src="js/script.js"></script>
+
+</body>
+
+</html>
