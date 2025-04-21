@@ -7,9 +7,32 @@ hamburger.addEventListener('click', (e) => {
   e.preventDefault();
 });
 
+// Cek apakah user sudah login dari cookie
+function getCookie(nama) {
+  const decodedCookie = decodeURIComponent(document.cookie);
+  const cookies = decodedCookie.split(';');
+  for (let i = 0; i < cookies.length; i++) {
+    let c = cookies[i].trim();
+    if (c.indexOf(nama + "=") === 0) {
+      return JSON.parse(c.substring(nama.length + 1));
+    }
+  }
+  return null;
+}
+
+function isUserLoggedIn() {
+  return getCookie("userLogin") !== null;
+}
+
 // === Inisialisasi saat halaman dimuat ===
 document.addEventListener('DOMContentLoaded', function () {
   muatKeranjang();
+
+// Lanjutkan checkout jika sebelumnya user mau checkout
+if (typeof window.lanjutkanCheckout === "function") {
+  window.lanjutkanCheckout();
+  window.lanjutkanCheckout = null;
+}
 
   // Fungsi simpan data ke cookie
   function simpanKeCookie(nama, nilai, hari) {
@@ -48,7 +71,7 @@ document.addEventListener('DOMContentLoaded', function () {
   }
 
   // Fungsi simpan ke keranjang
-  function simpanKeKeranjang(data, tampilkanAlert = true) {
+  function simpanKeKeranjang(data, tampilkanAlert = false) {
     const keranjang = JSON.parse(localStorage.getItem("keranjang")) || [];
     keranjang.push(data);
     localStorage.setItem("keranjang", JSON.stringify(keranjang));
@@ -89,17 +112,17 @@ document.addEventListener('DOMContentLoaded', function () {
   };
 
   // Tombol tambah ke keranjang
-  document.querySelectorAll('.keranjang-btn').forEach(button => {
-    button.addEventListener('click', function () {
-      const produk = this.getAttribute('data-produk');
-      const bahan = this.getAttribute('data-bahan');
-      const stok = this.getAttribute('data-stok');
-      const harga = this.getAttribute('data-harga');
-      const item = { produk, bahan, stok, harga };
+document.querySelectorAll('.keranjang-btn').forEach(button => {
+  button.addEventListener('click', function () {
+    const produk = this.getAttribute('data-produk');
+    const bahan = this.getAttribute('data-bahan');
+    const stok = this.getAttribute('data-stok');
+    const harga = this.getAttribute('data-harga');
+    const item = { produk, bahan, stok, harga };
 
-      simpanKeKeranjang(item);
-    });
+    simpanKeKeranjang(item, false); // Tanpa alert
   });
+});
 
   // Tombol checkout dari produk langsung
   document.querySelectorAll('.checkout-btn').forEach(button => {
@@ -109,17 +132,30 @@ document.addEventListener('DOMContentLoaded', function () {
       const stok = this.getAttribute('data-stok');
       const harga = this.getAttribute('data-harga');
       const item = { produk, bahan, stok, harga };
-
+  
       simpanKeKeranjang(item, false); // tanpa alert
-      handleCheckout();
+  
+      if (isUserLoggedIn()) {
+        handleCheckout();
+      } else {
+        loginFormContainer.style.display = 'block';
+        window.lanjutkanCheckout = () => handleCheckout(); // Simpan fungsi untuk lanjutkan setelah login
+      }
     });
-  });
+  });  
 
   // Tombol checkout dari dalam halaman keranjang
   const checkoutBtn = document.getElementById("checkout-btn");
-  if (checkoutBtn) {
-    checkoutBtn.addEventListener("click", handleCheckout);
-  }
+if (checkoutBtn) {
+  checkoutBtn.addEventListener("click", function () {
+    if (isUserLoggedIn()) {
+      handleCheckout();
+    } else {
+      loginFormContainer.style.display = 'block';
+      window.lanjutkanCheckout = () => handleCheckout(); // Simpan fungsi untuk lanjutkan setelah login
+    }
+  });
+}
 
   // Toggle tampilan halaman keranjang
   const toggleKeranjang = document.getElementById("toggle-keranjang");
@@ -160,7 +196,7 @@ closeLoginForm.addEventListener('click', function () {
 
 // === FUNGSI LOGIN ===
 document.getElementById("login-form").addEventListener("submit", function (e) {
-  e.preventDefault(); // Mencegah reload halaman
+  e.preventDefault();
 
   const nama = document.getElementById("login-nama").value;
   const password = document.getElementById("login-password").value;
@@ -171,11 +207,19 @@ document.getElementById("login-form").addEventListener("submit", function (e) {
   }
 
   const dataLogin = { nama, password };
-  simpanKeCookie("userLogin", dataLogin, 3); // Simpan 3 hari
+  simpanKeCookie("userLogin", dataLogin, 3);
 
   alert("Login berhasil! Data disimpan di cookie.");
-
-  // Tutup form login
   loginFormContainer.style.display = 'none';
+
+  // Lanjutkan checkout jika sebelumnya user mau checkout
+  if (typeof window.lanjutkanCheckout === "function") {
+    window.lanjutkanCheckout();
+    window.lanjutkanCheckout = null;
+  }
 });
+
+
+
+
 
