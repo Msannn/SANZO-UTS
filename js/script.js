@@ -51,7 +51,7 @@ if (typeof window.lanjutkanCheckout === "function") {
       return;
     }
 
-    simpanKeCookie("dataCheckout", keranjang, 3);
+    simpanKeCookie("dataCheckout", keranjang, 1);
 
     let total = 0;
     let struk = "=== Struk Pembelian ===\n\n";
